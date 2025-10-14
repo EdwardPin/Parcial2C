@@ -20,3 +20,26 @@ struct Node* createNode(int id, char nombre[], int stock) {
     newNode->next = NULL;
     return newNode;
 }
+
+// Insertar al inicio
+void insertAtBeginning(int id, char name[], int stock) {
+    struct Node* newNode = createNode(id, name, stock);
+    newNode->next = head;
+    head = newNode;
+    printf("✅ Producto insertado al inicio.\n");
+}
+
+// Insertar al final
+void insertAtEnd(int id, char name[], int stock) {
+    struct Node* newNode = createNode(id, name, stock);
+    if (head == NULL) {
+        head = newNode;
+    } else {
+        struct Node* temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+    printf("✅ Producto insertado al final.\n");
+}
