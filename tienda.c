@@ -105,3 +105,74 @@ void listInventory() {
         temp = temp->next;
     }
 }
+
+// Menú principal
+void menu() {
+    int option, id, stock;
+    char nombre[40];
+
+    do {
+        printf("\n========== MENU INVENTARIO ==========\n");
+        printf("1. Insertar producto al inicio\n");
+        printf("2. Insertar producto al final\n");
+        printf("3. Buscar producto por ID\n");
+        printf("4. Actualizar stock por ID\n");
+        printf("5. Eliminar producto por ID\n");
+        printf("6. Listar inventario completo\n");
+        printf("0. Salir\n");
+        printf("Seleccione una opción: ");
+        scanf("%d", &option);
+
+        switch (option) {
+            case 1:
+                printf("Ingrese ID: ");
+                scanf("%d", &id);
+                printf("Ingrese nombre: ");
+                scanf(" %[^\n]", nombre);  // lee cadena con espacios
+                printf("Ingrese stock: ");
+                scanf("%d", &stock);
+                insertAtBeginning(id, nombre, stock);
+                break;
+            case 2:
+                printf("Ingrese ID: ");
+                scanf("%d", &id);
+                printf("Ingrese nombre: ");
+                scanf(" %[^\n]", nombre);
+                printf("Ingrese stock: ");
+                scanf("%d", &stock);
+                insertAtEnd(id, nombre, stock);
+                break;
+            case 3:
+                printf("Ingrese ID a buscar: ");
+                scanf("%d", &id);
+                searchById(id);
+                break;
+            case 4:
+                printf("Ingrese ID a actualizar: ");
+                scanf("%d", &id);
+                printf("Ingrese nuevo stock: ");
+                scanf("%d", &stock);
+                updateStock(id, stock);
+                break;
+            case 5:
+                printf("Ingrese ID a eliminar: ");
+                scanf("%d", &id);
+                deleteById(id);
+                break;
+            case 6:
+                listInventory();
+                break;
+            case 0:
+                printf("Saliendo del programa...\n");
+                break;
+            default:
+                printf("Opción no válida.\n");
+        }
+    } while (option != 0);
+}
+
+// Función principal
+int main() {
+    menu();
+    return 0;
+}
