@@ -58,7 +58,7 @@ void searchById(int id) {
     printf("Producto con ID %d no encontrado.\n", id);
 }
 
-// Actualizar stock por ID
+// Actualizar el stock por ID
 void updateStock(int id, int newStock) {
     struct Node* temp = head;
     while (temp != NULL) {
@@ -70,4 +70,38 @@ void updateStock(int id, int newStock) {
         temp = temp->next;
     }
     printf("Producto con ID %d no encontrado.\n", id);
+}
+
+// Eliminar un producto por ID
+void deleteById(int id) {
+    struct Node *temp = head, *prev = NULL;
+    while (temp != NULL && temp->id != id) {
+        prev = temp;
+        temp = temp->next;
+    }
+    if (temp == NULL) {
+        printf("Producto con ID %d no encontrado.\n", id);
+        return;
+    }
+    if (prev == NULL) {
+        head = temp->next;
+    } else {
+        prev->next = temp->next;
+    }
+    free(temp);
+    printf("Producto eliminado correctamente.\n");
+}
+
+// Lista del inventario
+void listInventory() {
+    struct Node* temp = head;
+    if (temp == NULL) {
+        printf("Inventario vacío.\n");
+        return;
+    }
+    printf("\nInventario actual:\n");
+    while (temp != NULL) {
+        printf("ID: %d | Nombre: %s | Stock: %d\n", temp->id, temp->nombre, temp->stock);
+        temp = temp->next;
+    }
 }
