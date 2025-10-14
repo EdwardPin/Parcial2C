@@ -1,0 +1,38 @@
+# Compilación y binarios
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+tienda   
+
+# Archivos intermedios
+*.gch
+*.pch
+*.dSYM/
+*.stackdump
+
+# Carpetas de compilación
+/build/
+bin/
+debug/
+release/
+dist/
+
+# Logs y temporales
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Configuración de IDEs
+.vscode/
+.idea/
+*.code-workspace
